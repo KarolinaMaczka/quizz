@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {QuizService} from "./quiz.service";
+import {Component, Inject, OnInit} from '@angular/core';
+import {QuizService} from "./services/quiz.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
 
   quizzes: any[] = [];
 
-  constructor(private quizService: QuizService) {}
+  constructor(@Inject(QuizService) private quizService: QuizService) {}
 
   async ngOnInit() {
     await this.fetchQuizzes();
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
 
   async fetchQuizzes() {
     try {
-      this.quizzes = await this.quizService.getQuizzes();
+      this.quizzes = await this.quizService.getTests('VurpEz2Z5HFnoMc4UZT4');
     } catch (error) {
       console.error('Error fetching quizzes:', error);
     }
