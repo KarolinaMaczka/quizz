@@ -1,3 +1,35 @@
-<p>view-page works!</p>
+<div class="test-title">
+  <h2>{{ testTitle }}</h2>
+</div>
 
-{{cards | json}}
+<div class="card-container">
+  <div class="card" *ngFor="let card of cards">
+    <div class="text-container" (mouseenter)="card.showDeleteButton = true" (mouseleave)="card.showDeleteButton = false">
+      <div class="term">{{ card.term }}</div>
+      <div class="definition">{{ card.definition }}</div>
+      <button mat-icon-button class="delete-button" *ngIf="card.showDeleteButton" (click) = "deleteCard(card.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<button mat-button color="primary" (click)="showAddCardForm = true">Add New Card</button>
+
+<div *ngIf="showAddCardForm" class="add-card-form">
+  <form (submit)="addCard()">
+    <mat-form-field>
+      <input matInput placeholder="Term" [(ngModel)]="newCardTerm" name="newCardTerm" required>
+      <mat-error *ngIf="newCardTerm && !newCardTerm.trim()">Term is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Definition" [(ngModel)]="newCardDefinition" name="newCardDefinition" required>
+      <mat-error *ngIf="newCardDefinition && !newCardDefinition.trim()">Definition is required</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!newCardTerm || !newCardDefinition || (!newCardTerm.trim() || !newCardDefinition.trim())">Save Card</button>
+  </form>
+</div>
+
+
+

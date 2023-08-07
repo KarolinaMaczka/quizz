@@ -1,5 +1,6 @@
-export interface Card {
-  id: string;
-  term: string;
-  definition: string;
+export class Card {
+  showDeleteButton: boolean = false;
+
+  constructor(public id: string, public term: string, public definition: string){}
+
 }
