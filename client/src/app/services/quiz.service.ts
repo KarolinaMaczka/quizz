@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { firstValueFrom } from 'rxjs';
+import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
 
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'https://quizz-service.onrender.com/api';
 
   constructor(private http: HttpClient) { }
 
@@ -78,5 +79,26 @@ export class QuizService {
       catchError(this.handleError)
     ));
   }
+
+  async login(username: string, password: string): Promise<User>{
+    const url = `${this.baseUrl}/users`;
+
+    try {
+      const users = await firstValueFrom(this.http.get<any[]>(url).pipe(
+        catchError(this.handleError)
+      ));
+
+      console.log(users)
+      console.log(users[0].login)
+      const user = users.find((u: any) => u.login === username && u.password === password);
+      if (user) {
+        return user;
+      } else {
+        throw new Error('Login failed');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      throw error;
+    }  }
 }
 

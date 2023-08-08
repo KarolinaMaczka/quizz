@@ -11,15 +11,15 @@ import {Test} from "../models/test.model";
   styleUrls: ['./view-test.component.css']
 })
 export class ViewTestComponent implements OnInit {
-  testId: string = 'p8RNyv97BarJaQA3mEg4';
-  userId = 'VurpEz2Z5HFnoMc4UZT4';
+  testId: string = '';
+  userId = '';
   cards: Card[] = [];
   testTitle: string | null ='';
   newCardTerm: string = '';
   newCardDefinition: string = '';
   showAddCardForm: boolean = false;
   @ViewChild('confirmationDialog') confirmationDialog: any;
-  test: Test |undefined
+  test: Test | undefined
 
 
   constructor(
@@ -30,11 +30,11 @@ export class ViewTestComponent implements OnInit {
 ) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
+      this.userId = <string>params.get('userId')
       this.testId = <string>params.get('id');
       this.testTitle = params.get('title');
     });
     this.loadTest();
-
   }
 
   loadTest(): void {
@@ -93,12 +93,16 @@ export class ViewTestComponent implements OnInit {
     if (confirmation) {
       this.quizService.deleteTest(this.userId, this.testId)
         .then(() => {
-          this.router.navigate(['/main-page']);
+          this.router.navigateByUrl(`/main-page/${this.userId}`)
         })
         .catch((error:any) => {
           console.error('Error deleting test:', error);
         });    }
 
+  }
+
+  learn(){
+    this.router.navigateByUrl(`/learn-test/${this.userId}/${this.testId}`)
   }
 
 }

@@ -6,7 +6,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { MainPageComponent } from './main-page/main-page.component';
 import {QuizService} from "./services/quiz.service";
 import { ViewTestComponent } from './view-test/view-test.component';
-import { EditTestComponent } from './edit-test/edit-test.component';
+import { LearnTestComponent } from './learn-test/learn-test.component';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import BrowserAnimationsModule
@@ -23,7 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppComponent,
     MainPageComponent,
     ViewTestComponent,
-    EditTestComponent,
+    LearnTestComponent,
     LoginComponent,
     CreateUserComponent
   ],

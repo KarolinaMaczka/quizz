@@ -1,6 +1,6 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let link of links" [routerLinkActive]="['active']">
-    <a matListItemTitle [routerLink]="['/view-test', link.id, link.title]">{{ link.title }}</a>
+    <a matListItemTitle [routerLink]="['/view-test', userId, link.id, link.title]">{{ link.title }}</a>
   </mat-list-item>
 </mat-nav-list>
 

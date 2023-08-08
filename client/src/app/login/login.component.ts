@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
+import {QuizService} from "../services/quiz.service";
 
 @Component({
   selector: 'app-login',
@@ -7,4 +9,21 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  username: string = '';
+  password: string = '';
+
+  constructor(private quizService: QuizService, private router: Router) {}
+
+  async login() {
+    try {
+      const user = await this.quizService.login(this.username, this.password);
+      if (user) {
+        await this.router.navigateByUrl(`/main-page/${user.id}`);
+      } else {
+        console.log('Invalid credentials');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
+  }
 }

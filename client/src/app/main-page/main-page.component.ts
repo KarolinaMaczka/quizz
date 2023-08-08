@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuizService} from "../services/quiz.service";
 import { Test } from '../models/test.model';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-page',
@@ -9,15 +9,21 @@ import {Router} from "@angular/router";
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
-  userId = 'VurpEz2Z5HFnoMc4UZT4'; // Replace with the actual user ID
+  userId = '';
   tests: Test[] = [];
   links: { title: string; id: string; isActive: boolean }[] = [];
 
-
-  constructor(private quizService: QuizService, private router: Router) {}
+  constructor(private quizService: QuizService,
+              private router: Router,
+              private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.userId = <string>params.get('id')
+    });
     this.getTestsForUser();
+
   }
 
   getTestsForUser(): void {
@@ -33,10 +39,6 @@ export class MainPageComponent implements OnInit {
       .catch(error => {
         console.error('Error fetching tests:', error);
       });
-  }
-
-  showInfo(testId: string): void {
-    this.router.navigateByUrl(`/view-test/${testId}`);
   }
 
   createNewTest(): void {
