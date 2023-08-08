@@ -89,7 +89,7 @@ app.get('/api/users/:userId/tests', authenticate, async (req, res) => {
 app.get('/api/users', async (req, res) => {
     try {
         const usersSnapshot = await db.collection('users').get();
-        const users = usersSnapshot.docs.map(doc => doc.data());
+        const users = usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         res.status(200).json(users);
     } catch (error) {
         console.error('Error fetching users:', error);
