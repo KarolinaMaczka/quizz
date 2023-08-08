@@ -86,6 +86,17 @@ app.get('/api/users/:userId/tests', authenticate, async (req, res) => {
     }
 });
 
+app.get('/api/users', async (req, res) => {
+    try {
+        const usersSnapshot = await db.collection('users').get();
+        const users = usersSnapshot.docs.map(doc => doc.data());
+        res.status(200).json(users);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+});
+
 app.get('/api/users/:userId/tests/:testId/cards', authenticate, async (req, res) => {
     try {
         const { userId, testId } = req.params;
