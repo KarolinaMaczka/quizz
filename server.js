@@ -118,16 +118,15 @@ app.put('/api/users/:userId/tests/:testId/cards/:cardId', authenticate, async (r
         res.status(500).json({ error: 'Something went wrong' });
     }
 });
-
-app.delete('/api/quizzes/:id', async (req, res) => {
+app.delete('/api/users/:userId/tests/:testId', authenticate, async (req, res) => {
     try {
-        const { id } = req.params;
+        const { userId, testId } = req.params;
 
-        await db.collection('quizzes').doc(id).delete();
+        await db.collection('users').doc(userId).collection('tests').doc(testId).delete();
 
-        res.status(200).json({ message: 'Quiz deleted successfully!', id });
+        res.status(200).json({ message: 'Card deleted successfully!' });
     } catch (error) {
-        console.error('Error deleting quiz:', error);
+        console.error('Error deleting card:', error);
         res.status(500).json({ error: 'Something went wrong' });
     }
 });
