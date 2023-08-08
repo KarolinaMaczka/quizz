@@ -61,4 +61,12 @@ export class ViewTestComponent implements OnInit {
     });
   }
 
+  editCard(card: Card) {
+    card.edit = true;
+  }
+
+  updateCard(card: Card) {
+    this.quizService.updateCard(this.userId, this.testId, card.id, card)
+    card.edit = !card.edit;
+  }
 }

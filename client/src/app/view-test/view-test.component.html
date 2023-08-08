@@ -1,20 +1,35 @@
-<div class="test-title">
-  <h2>{{ testTitle }}</h2>
-</div>
-
 <div class="card-container">
-  <div class="card" *ngFor="let card of cards">
-    <div class="text-container" (mouseenter)="card.showDeleteButton = true" (mouseleave)="card.showDeleteButton = false">
-      <div class="term">{{ card.term }}</div>
-      <div class="definition">{{ card.definition }}</div>
-      <button mat-icon-button class="delete-button" *ngIf="card.showDeleteButton" (click) = "deleteCard(card.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
+  <div class="card-column">
+    <div class="card" *ngFor="let card of cards">
+      <div class="text-container" (mouseenter)="card.showDeleteButton = true" (mouseleave)="card.showDeleteButton = false">
+        <div class="term">{{ card.term }}</div>
+        <div class="definition">{{ card.definition }}</div>
+        <div class="buttons">
+          <button mat-icon-button class="edit-button" *ngIf="card.showDeleteButton" (click)="editCard(card)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="delete-button" *ngIf="card.showDeleteButton" (click)="deleteCard(card.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="edit-form" [ngStyle]="{ 'display': card.edit ? 'block' : 'none' }">
+        <form (submit)="updateCard(card)">
+          <mat-form-field>
+            <input matInput placeholder="Term" [(ngModel)]="card.term" name="cardTerm" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Definition" [(ngModel)]="card.definition" name="cardDefinition" required>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit">Update Card</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
 
 
+<div class = "add-card-all">
 <button mat-button color="primary" (click)="showAddCardForm = true">Add New Card</button>
 
 <div *ngIf="showAddCardForm" class="add-card-form">
@@ -30,6 +45,6 @@
     <button mat-raised-button color="primary" type="submit" [disabled]="!newCardTerm || !newCardDefinition || (!newCardTerm.trim() || !newCardDefinition.trim())">Save Card</button>
   </form>
 </div>
-
+</div>
 
 
