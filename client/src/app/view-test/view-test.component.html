@@ -1,3 +1,6 @@
+<button mat-raised-button color="warn" (click)="deleteTest()">Delete Test</button>
+
+
 <div class="card-container">
   <div class="card-column">
     <div class="card" *ngFor="let card of cards">
@@ -32,19 +35,22 @@
 <div class = "add-card-all">
 <button mat-button color="primary" (click)="showAddCardForm = true">Add New Card</button>
 
-<div *ngIf="showAddCardForm" class="add-card-form">
-  <form (submit)="addCard()">
-    <mat-form-field>
-      <input matInput placeholder="Term" [(ngModel)]="newCardTerm" name="newCardTerm" required>
-      <mat-error *ngIf="newCardTerm && !newCardTerm.trim()">Term is required</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Definition" [(ngModel)]="newCardDefinition" name="newCardDefinition" required>
-      <mat-error *ngIf="newCardDefinition && !newCardDefinition.trim()">Definition is required</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!newCardTerm || !newCardDefinition || (!newCardTerm.trim() || !newCardDefinition.trim())">Save Card</button>
-  </form>
-</div>
-</div>
+  <div *ngIf="showAddCardForm" class="add-card-form">
+    <form (submit)="addCard()">
+      <mat-form-field>
+        <input matInput placeholder="Term" [(ngModel)]="newCardTerm" name="newCardTerm" required>
+        <mat-error *ngIf="newCardTerm && !newCardTerm.trim()">Term is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Definition" [(ngModel)]="newCardDefinition" name="newCardDefinition" required>
+        <mat-error *ngIf="newCardDefinition && !newCardDefinition.trim()">Definition is required</mat-error>
+      </mat-form-field>
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!newCardTerm || !newCardDefinition || (!newCardTerm.trim() || !newCardDefinition.trim())">Save Card</button>
+        <button mat-raised-button color="warn" type="button" (click)="discardChanges()">Discard Changes</button>
+      </div>
+    </form>
+  </div>
+
 
 

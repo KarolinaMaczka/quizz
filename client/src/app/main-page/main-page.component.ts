@@ -38,4 +38,15 @@ export class MainPageComponent implements OnInit {
   showInfo(testId: string): void {
     this.router.navigateByUrl(`/view-test/${testId}`);
   }
+
+  createNewTest(): void {
+    const newTestTitle = prompt('Enter the title for the new test:');
+    if (newTestTitle !== null) {
+      this.quizService.createTest(this.userId, { title: newTestTitle, id: 'a' })
+        .then(( )=>{this.getTestsForUser()})
+        .catch(error => {
+          console.error('Error creating test:', error);
+        });
+    }
+  }
 }

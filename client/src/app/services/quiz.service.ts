@@ -71,5 +71,12 @@ export class QuizService {
       catchError(this.handleError)
     ));
   }
+
+  async deleteTest(userId: string, testId: string){
+    const url = `${this.baseUrl}/users/${userId}/tests/${testId}`;
+    return firstValueFrom(this.http.delete<any>(url).pipe(
+      catchError(this.handleError)
+    ));
+  }
 }
 

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'create-user', component: CreateUserComponent },
   { path: 'edit-test/:id', component: EditTestComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'view-test/:id', component: ViewTestComponent },
+  { path: 'view-test/:id/:title', component: ViewTestComponent },
 ];
 
 @NgModule({
