@@ -1,9 +1,15 @@
-<button mat-button color="primary" [routerLink]='["/main-page", userId]'>Main Page</button>
-<!--<a matListItemTitle [routerLink]="['/view-test', userId, link.id, link.title]">{{ link.title }}</a>-->
 
-<button mat-raised-button color="warn" (click)="deleteTest()">Delete Test</button>
+<div class="view-container">
+  <div class = "buttons-container">
+    <button mat-button color="primary" [routerLink]='["/main-page", userId]'>Main Page</button>
+    <button mat-raised-button color="warn" (click)="deleteTest()">Delete Test</button>
+    <button mat-button (click) ="learn()"> Learn </button>
+  </div>
 
-{{testTitle}}
+  <div class="test-title">
+    {{testTitle}}
+  </div>
+
 <div class="card-container">
   <div class="card-column">
     <div class="card" *ngFor="let card of cards">
@@ -27,7 +33,7 @@
           <mat-form-field>
             <input matInput placeholder="Definition" [(ngModel)]="card.definition" name="cardDefinition" required>
           </mat-form-field>
-          <button mat-raised-button color="primary" type="submit">Update Card</button>
+          <button mat-raised-button type="submit">Update Card</button>
         </form>
       </div>
     </div>
@@ -36,7 +42,7 @@
 
 
 <div class = "add-card-all">
-<button mat-button color="primary" (click)="showAddCardForm = true">Add New Card</button>
+<button mat-button (click)="showAddCardForm = true">Add New Card</button>
 
   <div *ngIf="showAddCardForm" class="add-card-form">
     <form (submit)="addCard()">
@@ -49,11 +55,11 @@
         <mat-error *ngIf="newCardDefinition && !newCardDefinition.trim()">Definition is required</mat-error>
       </mat-form-field>
       <div class="button-container">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!newCardTerm || !newCardDefinition || (!newCardTerm.trim() || !newCardDefinition.trim())">Save Card</button>
-        <button mat-raised-button color="warn" type="button" (click)="discardChanges()">Discard Changes</button>
+        <button mat-raised-button type="submit" [disabled]="!newCardTerm || !newCardDefinition || (!newCardTerm.trim() || !newCardDefinition.trim())">Save Card</button>
+        <button mat-raised-button type="button" (click)="discardChanges()">Discard Changes</button>
       </div>
     </form>
   </div>
 </div>
+</div>
 
-<button mat-button color="primary" (click) ="learn()"> Learn </button>

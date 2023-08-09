@@ -1,11 +1,15 @@
-<button mat-button color="primary" (click) ="signOut()"> Sign out </button>
+<div class="main-page">
+<button mat-button class="sign-out-button" (click)="signOut()">Sign out</button>
 
-<mat-nav-list>
-  <mat-list-item *ngFor="let link of links" [routerLinkActive]="['active']">
-    <a matListItemTitle [routerLink]="['/view-test', userId, link.id, link.title]">{{ link.title }}</a>
-  </mat-list-item>
-</mat-nav-list>
+<div class="nav-list-container">
+  <mat-nav-list>
+    <mat-list-item *ngFor="let link of links" [routerLinkActive]="['active']" class="mat-list-item">
+      <a matListItemTitle [routerLink]="['/view-test', userId, link.id, link.title]">{{ link.title }}</a>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
 
-<button mat-raised-button color="primary" (click)="createNewTest()">Create New Test</button>
+<button mat-raised-button class="create-test-button" (click)="createNewTest()">Create New Test</button>
+</div>
 
 

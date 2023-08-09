@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { firstValueFrom } from 'rxjs';
-import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'

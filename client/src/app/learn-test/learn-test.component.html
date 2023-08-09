@@ -1,17 +1,24 @@
-<button mat-button color="primary" [routerLink]='["/main-page", userId]'>Main Page</button>
-
-
-<div *ngIf="showFlashcard">
-  <div class="flashcard">
-    <div class="term">{{ flashcards[currentCardIndex].term }}</div>
-    <div class="definition">{{ flashcards[currentCardIndex].definition }}</div>
-  </div>
-  <button (click)="prevCard()" *ngIf="currentCardIndex > 0">Previous</button>
-  <button (click)="nextCard()" *ngIf="currentCardIndex < flashcards.length">Next</button>
-  <!--  <button (click)="deleteCard(flashcards[currentCardIndex]?.id)">Delete</button>-->
+<div class="learn-container">
+<div class="buttons-container">
+  <button mat-button color="primary" [routerLink]='["/main-page", userId]'>Main Page</button>
 </div>
 
-<div *ngIf="showCongratulations" class="congratulations">
-  Congratulations!
+  <div *ngIf="showFlashcard" class="flashcard-container">
+    <div class="flashcard">
+      <div class="term">{{ flashcards[currentCardIndex].term }}</div>
+      <div class="definition">{{ flashcards[currentCardIndex].definition }}</div>
+      <div class="flashcard-buttons">
+        <button (click)="prevCard()" *ngIf="currentCardIndex > 0">Previous</button>
+        <button (click)="nextCard()" *ngIf="currentCardIndex < flashcards.length">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showCongratulations" class="congratulations">
+    <div class="congratulations-message">
+      Congratulations!
+    </div>
+  </div>
+
 </div>
 

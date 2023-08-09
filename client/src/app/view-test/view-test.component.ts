@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { QuizService } from '../services/quiz.service';
 import { Card } from '../models/card.model';
 import {ActivatedRoute, Router} from "@angular/router";
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import {Test} from "../models/test.model";
 
 @Component({

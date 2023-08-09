@@ -8,7 +8,6 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ViewTestComponent } from './view-test/view-test.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'main-page/:id', component: MainPageComponent },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'edit-test/:id', component: LearnTestComponent },

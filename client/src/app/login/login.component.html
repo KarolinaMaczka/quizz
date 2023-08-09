@@ -1,13 +1,14 @@
 <div class="login-container">
-  <h2>Login</h2>
+  <button mat-button class="sign-up-button" (click)="signUp()">Sign up</button>
+
   <form (ngSubmit)="login()">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" [(ngModel)]="username" required>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" [(ngModel)]="password" required>
-    <button type="submit">Login</button>
+    <button type="submit">Sign in</button>
   </form>
-</div>
+  <h2 class="login-title"> Sign in and start learning!</h2>
 
-<button mat-button color="primary" (click) ="signUp()"> Sign up </button>
+</div>
 

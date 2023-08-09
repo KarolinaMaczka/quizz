@@ -24,13 +24,13 @@ export class AuthenticateService {
     return Promise.reject(errorMessage);
   }
 
-  setAuthenticated(value: boolean) {
-    this.authenticated = value;
-  }
-
-  isAuthenticatedUser() {
-    return this.authenticated;
-  }
+  // setAuthenticated(value: boolean) {
+  //   this.authenticated = value;
+  // }
+  //
+  // isAuthenticatedUser() {
+  //   return this.authenticated;
+  // }
 
   async login(username: string, password: string): Promise<User>{
     const url = `${this.baseUrl}/users`;

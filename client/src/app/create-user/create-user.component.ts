@@ -67,4 +67,7 @@ export class CreateUserComponent implements OnInit{
     }
   }
 
+  LogIn() {
+    this.router.navigateByUrl(`/`)
+  }
 }
