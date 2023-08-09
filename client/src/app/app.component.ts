@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {QuizService} from "./services/quiz.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit{
 
   quizzes: any[] = [];
 
-  constructor(@Inject(QuizService) private quizService: QuizService) {}
+  constructor(@Inject(QuizService) private quizService: QuizService, private router: Router) {}
 
   async ngOnInit() {
     await this.fetchQuizzes();

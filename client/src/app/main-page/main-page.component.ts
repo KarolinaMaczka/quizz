@@ -51,4 +51,8 @@ export class MainPageComponent implements OnInit {
         });
     }
   }
+
+  signOut(){
+    this.router.navigateByUrl(`/`)
+  }
 }

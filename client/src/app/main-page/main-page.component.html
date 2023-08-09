@@ -1,3 +1,5 @@
+<button mat-button color="primary" (click) ="signOut()"> Sign out </button>
+
 <mat-nav-list>
   <mat-list-item *ngFor="let link of links" [routerLinkActive]="['active']">
     <a matListItemTitle [routerLink]="['/view-test', userId, link.id, link.title]">{{ link.title }}</a>

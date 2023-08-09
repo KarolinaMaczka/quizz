@@ -59,6 +59,13 @@ export class QuizService {
     ));
   }
 
+  async getUsers(): Promise<any> {
+    const url = `${this.baseUrl}/users`;
+    return firstValueFrom(this.http.get<any[]>(url).pipe(
+      catchError(this.handleError)
+    ));
+  }
+
   async updateCard(userId: string, testId: string, cardId: string, card: any): Promise<any> {
     const url = `${this.baseUrl}/users/${userId}/tests/${testId}/cards/${cardId}`;
     return firstValueFrom(this.http.put<any>(url, card).pipe(
@@ -80,25 +87,5 @@ export class QuizService {
     ));
   }
 
-  async login(username: string, password: string): Promise<User>{
-    const url = `${this.baseUrl}/users`;
-
-    try {
-      const users = await firstValueFrom(this.http.get<any[]>(url).pipe(
-        catchError(this.handleError)
-      ));
-
-      console.log(users)
-      console.log(users[0].login)
-      const user = users.find((u: any) => u.login === username && u.password === password);
-      if (user) {
-        return user;
-      } else {
-        throw new Error('Login failed');
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-      throw error;
-    }  }
 }
 
