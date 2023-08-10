@@ -1,6 +1,6 @@
 # Quizzz
 This is a web application that allows users to create quizzes and add flashcards to them for effective learning.
-I have deployed server part on render.com and user interface on firebase.com.
+I have deployed api part on render.com and user interface on firebase.com.
 Here is a link: https://quizzz-bfcdb.web.app/
 
 ## Table of Contents
@@ -16,7 +16,7 @@ Here is a link: https://quizzz-bfcdb.web.app/
 - User Authentication: Sign up and log in.
 - Quiz Management: Create, view, and delete quizzes.
 - Flashcard Creation: Add flashcards to quizzes with terms and definitions.
-- Flashcard Study: View flashcards one by one and navigate using "Next" and "Previous" buttons.
+- Flashcard Study: View flashcards individually and navigate using "Next" and "Previous" buttons.
 - Flashcard Editing: Edit the terms and definitions of flashcards.
 - Flashcard Deletion: Delete flashcards from quizzes.
 
